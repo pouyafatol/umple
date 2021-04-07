@@ -4,6 +4,7 @@
 //
 // Initializing and maintaining the features on the screen in UmpleOnline
 // Layout initialization and maintenance is located in umple_layout.js.
+// line 832   console.log("!!!CODE",umpleCode);
 
 Page = new Object();
 Page.selectedItem = null;

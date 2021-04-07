@@ -7,6 +7,9 @@
 // Actions associated with editing the graphical diagram are
 // located in the umple_action_diagram.js file.
 //
+
+// line 2151   console.log("11111111");
+// Line 2675   console.log("222222222");
 var Action = new Object();
 Action.waiting_time = 1500;
 Action.oldTimeout = null;
@@ -2660,6 +2663,15 @@ Action.ajax = function(callback,post,errors,tabIndependent)
 {
   var modelAndPositioning = Page.getUmpleCode();
 
+
+  // TODO display periodically, for a given duration. (ex. for 2min every 5min)
+  // uses a regex to count classes and/or associations, then suggests to use GraphViz when it gets too big.
+  let sizeThreshold = 15;
+  if((modelAndPositioning.match(/(class\s+\w+\s*{)|(isA\s\w+)|(association\s*{)/g)||[]).length >= sizeThreshold) {
+    if(!document.getElementById("buttonShowGvClassDiagram").checked) {
+      Page.setFeedbackMessage("Suggestion: Since there are so many classes, <button onClick='Page.clickShowGvClassDiagram(); Page.setFeedbackMessage();'>switch to automated layout (G).</button>");
+    }
+  }
   var umpleCode = encodeURIComponent(modelAndPositioning);
   var filename = Page.getFilename();
   // var errors = typeof(errors) != 'undefined' ? errors : "false";
